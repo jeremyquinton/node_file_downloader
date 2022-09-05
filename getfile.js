@@ -12,8 +12,9 @@ function run () {
                 `--disable-web-security`,
                 `--disable-features=IsolateOrigins,site-per-process`,
                 `--window-size=2048,1024`,
-            ]
-            //userDataDir: './tmp/myChromeSession'
+		`--no-sandbox`     
+            ],
+	     executablePath: '/var/www/nodefiledownloader/node_modules/puppeteer/.local-chromium/linux-1022525/chrome-linux/chrome', 
         });
 
         let page = await browser.newPage();
