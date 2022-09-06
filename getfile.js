@@ -58,7 +58,7 @@ function run () {
         const client = await page.target().createCDPSession();
         await client.send("Page.setDownloadBehavior", {
             behavior: "allow",
-            downloadPath: "./download", // Change this to your desired download path.
+            downloadPath: "/var/www/nodefiledownloader/download", // Change this to your desired download path.
         })
 
         await page.waitForTimeout(2000); 
