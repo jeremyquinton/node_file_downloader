@@ -8,22 +8,22 @@ function run () {
     (async () => {
     
         let path = '';
-        let headless = '';
+        let headlessValue = '';
         let downloadPath = '';
         
         console.log(os.platform());
         if (os.platform() === 'linux')  {
             let downloadPath = '/var/www/nodefiledownloader/download';
-            let headless = true;
+            let headlessValue = true;
             let path = '/var/www/nodefiledownloader/node_modules/puppeteer/.local-chromium/linux-1022525/chrome-linux/chrome';
         } else {
             let downloadPath = '/Users/jeremyquinton/Development/standalone/download';
-            let headless = false;  
+            let headlessValue = false;  
             let path = '/Users/jeremyquinton/Development/standalone/node_modules/puppeteer/.local-chromium/mac-1022525/chrome-mac/Chromium.app/Contents/MacOS/Chromium';
         }
 
         const browser = await puppeteer.launch({
-            headless: headless,
+            headless: headlessValue,
             args: [
                 `--disable-web-security`,
                 `--disable-features=IsolateOrigins,site-per-process`,
