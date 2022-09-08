@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
 const fs = require('fs');
-import Os from 'os'
+const os = require('os');
 
 run();
 
@@ -10,7 +10,8 @@ function run () {
         let path = '';
         let headless = '';
         
-        if (Os.platform() === 'linux')  {
+        console.log(os.platform());
+        if (os.platform() === 'linux')  {
             let downloadPath = '/var/www/nodefiledownloader/download';
             let headless = true;
             let path = '/var/www/nodefiledownloader/node_modules/puppeteer/.local-chromium/linux-1022525/chrome-linux/chrome';
