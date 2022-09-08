@@ -6,14 +6,28 @@ run();
 function run () {
     (async () => {
     
+        let path = '';
+        let headless = '';
+
+        console.log(process.env.PRODUCTION);
+       
+        if (process.env.PRODUCTION) {
+            let headless = true;
+            let path = '/var/www/nodefiledownloader/node_modules/puppeteer/.local-chromium/linux-1022525/chrome-linux/chrome';
+        } else {
+            let headless = false;  
+            let path = '/Users/jeremyquinton/Development/standalone/node_modules/puppeteer/.local-chromium/mac-1022525/chrome-mac/Chromium.app/Contents/MacOS/Chromium';
+        }
+
         const browser = await puppeteer.launch({
-            headless: false,
+            headless: headless,
             args: [
                 `--disable-web-security`,
                 `--disable-features=IsolateOrigins,site-per-process`,
                 `--window-size=2048,1024`,
-            ]
-            //userDataDir: './tmp/myChromeSession'
+		        `--no-sandbox`     
+            ],
+	        executablePath: path 
         });
 
         let page = await browser.newPage();
@@ -66,7 +80,7 @@ function run () {
         const client = await page.target().createCDPSession();
         await client.send("Page.setDownloadBehavior", {
             behavior: "allow",
-            downloadPath: "./download", // Change this to your desired download path.
+            downloadPath: "/var/www/nodefiledownloader/download", // Change this to your desired download path.
         })
 
         await page.waitForTimeout(2000); 
@@ -103,4 +117,3 @@ function delay(time) {
         setTimeout(resolve, time)
     });
  }
-
