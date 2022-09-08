@@ -9,8 +9,6 @@ function run () {
     
         let path = '';
         let headless = '';
-
-        console.log(process.env.PRODUCTION);
         
         if (Os.platform() === 'linux')  {
             let downloadPath = '/var/www/nodefiledownloader/download';
@@ -83,7 +81,7 @@ function run () {
         const client = await page.target().createCDPSession();
         await client.send("Page.setDownloadBehavior", {
             behavior: "allow",
-            downloadPath: "/var/www/nodefiledownloader/download", // Change this to your desired download path.
+            downloadPath: downloadPath, // Change this to your desired download path.
         })
 
         await page.waitForTimeout(2000); 
