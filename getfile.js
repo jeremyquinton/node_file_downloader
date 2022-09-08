@@ -13,13 +13,13 @@ function run () {
         
         console.log(os.platform());
         if (os.platform() === 'linux')  {
-            let downloadPath = '/var/www/nodefiledownloader/download';
-            let headlessValue = true;
-            let path = '/var/www/nodefiledownloader/node_modules/puppeteer/.local-chromium/linux-1022525/chrome-linux/chrome';
+            downloadPath = '/var/www/nodefiledownloader/download';
+            headlessValue = true;
+            path = '/var/www/nodefiledownloader/node_modules/puppeteer/.local-chromium/linux-1022525/chrome-linux/chrome';
         } else {
-            let downloadPath = '/Users/jeremyquinton/Development/standalone/download';
-            let headlessValue = false;  
-            let path = '/Users/jeremyquinton/Development/standalone/node_modules/puppeteer/.local-chromium/mac-1022525/chrome-mac/Chromium.app/Contents/MacOS/Chromium';
+            downloadPath = '/Users/jeremyquinton/Development/standalone/download';
+            headlessValue = false;  
+            path = '/Users/jeremyquinton/Development/standalone/node_modules/puppeteer/.local-chromium/mac-1022525/chrome-mac/Chromium.app/Contents/MacOS/Chromium';
         }
 
         const browser = await puppeteer.launch({
@@ -30,7 +30,7 @@ function run () {
                 `--window-size=2048,1024`,
 		        `--no-sandbox`     
             ],
-	        executablePath: path 
+	        executablePath: path,
         });
 
         let page = await browser.newPage();
@@ -120,3 +120,4 @@ function delay(time) {
         setTimeout(resolve, time)
     });
  }
+//DISPLAY=:0
