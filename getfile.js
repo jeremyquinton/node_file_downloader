@@ -9,6 +9,7 @@ function run () {
     
         let path = '';
         let headless = '';
+        let downloadPath = '';
         
         console.log(os.platform());
         if (os.platform() === 'linux')  {
