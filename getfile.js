@@ -1,5 +1,6 @@
 const puppeteer = require('puppeteer');
 const fs = require('fs');
+import Os from 'os'
 
 run();
 
@@ -10,11 +11,13 @@ function run () {
         let headless = '';
 
         console.log(process.env.PRODUCTION);
-       
-        if (process.env.PRODUCTION) {
+        
+        if (Os.platform() === 'linux')  {
+            let downloadPath = '/var/www/nodefiledownloader/download';
             let headless = true;
             let path = '/var/www/nodefiledownloader/node_modules/puppeteer/.local-chromium/linux-1022525/chrome-linux/chrome';
         } else {
+            let downloadPath = '/Users/jeremyquinton/Development/standalone/download';
             let headless = false;  
             let path = '/Users/jeremyquinton/Development/standalone/node_modules/puppeteer/.local-chromium/mac-1022525/chrome-mac/Chromium.app/Contents/MacOS/Chromium';
         }
