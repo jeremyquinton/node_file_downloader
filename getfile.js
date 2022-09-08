@@ -7,7 +7,7 @@ function run () {
     (async () => {
     
         const browser = await puppeteer.launch({
-            headless: true,
+            headless: false,
             args: [
                 `--disable-web-security`,
                 `--disable-features=IsolateOrigins,site-per-process`,
@@ -25,6 +25,15 @@ function run () {
 
         var url = 'https://seller.takealot.com/shipments/replenishment-orders';
         await page.goto(url, {waitUntil: 'networkidle0'});
+
+        console.log("waiting for cookie popup to load");
+        await page.waitForTimeout(5000);
+        await page.waitForSelector('#wfx-frame-popup');
+        const elementHandleFirst = await page.$('#wfx-frame-popup');
+        const iframeFirst = await elementHandleFirst.contentFrame();
+        await iframeFirst.waitForSelector('#segment_prim_btn_1');
+        const clickpopupDontShowAgainFist = await iframeFirst.click('#segment_prim_btn_1');
+
         await page.waitForSelector('input[name=email]', { timeout: 5000 });
         await page.hover('input[name=email]');
         await page.click('input[name=email]', {'button':'middle','delay':'100'});
@@ -94,3 +103,4 @@ function delay(time) {
         setTimeout(resolve, time)
     });
  }
+
