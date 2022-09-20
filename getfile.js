@@ -45,11 +45,11 @@ function run () {
 
         console.log("waiting for cookie popup to load");
         await page.waitForTimeout(5000);
-        await page.waitForSelector('#wfx-frame-popup');
-        const elementHandleFirst = await page.$('#wfx-frame-popup');
-        const iframeFirst = await elementHandleFirst.contentFrame();
-        await iframeFirst.waitForSelector('#segment_prim_btn_1');
-        const clickpopupDontShowAgainFist = await iframeFirst.click('#segment_prim_btn_1');
+//        await page.waitForSelector('#wfx-frame-popup');
+//        const elementHandleFirst = await page.$('#wfx-frame-popup');
+//        const iframeFirst = await elementHandleFirst.contentFrame();
+//        await iframeFirst.waitForSelector('#segment_prim_btn_1');
+//        const clickpopupDontShowAgainFist = await iframeFirst.click('#segment_prim_btn_1');
 
         await page.waitForSelector('input[name=email]', { timeout: 5000 });
         await page.hover('input[name=email]');
