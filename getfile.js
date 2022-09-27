@@ -57,7 +57,7 @@ function run () {
         await page.type('input[name=email]',"miscstoreza@gmail.com");
         await page.hover('input[name=password]');
         await page.click('input[name=password]', {'button':'middle','delay':'100'});
-        await page.type('input[name=password]',"maxjackQcSPA6ep@maxjack");
+        await page.type('input[name=password]',"J3r3^^789@@J3r3^^789@@");
         await page.click('button.ui.blue.large.fluid.button');
         await page.waitForNavigation(); 
         console.log("logged in");  
