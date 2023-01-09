@@ -57,7 +57,7 @@ function run () {
         await page.type('input[name=email]',"miscstoreza@gmail.com");
         await page.hover('input[name=password]');
         await page.click('input[name=password]', {'button':'middle','delay':'100'});
-        await page.type('input[name=password]',"J3r3^^789@@J3r3^^789@@");
+        await page.type('input[name=password]',"J3r3^^789@@");
         await page.click('button.ui.blue.large.fluid.button');
         await page.waitForNavigation(); 
         console.log("logged in");  
@@ -66,15 +66,16 @@ function run () {
         //wait for the popup and click it
         //div surrouding iframe
 
-        console.log("waiting for popup to load");
-        await page.waitForTimeout(5000);
-        await page.waitForSelector('#wfx-frame-popup');
-        const elementHandle = await page.$('#wfx-frame-popup');
-        const iframe = await elementHandle.contentFrame();
-        await iframe.waitForSelector('#popupDontShowAgain');
-        console.log("clicked don't show this button again");
-        const clickpopupDontShowAgain = await iframe.click('#popupDontShowAgain');
-        const clickpopupClosePanel = await iframe.click('#popupClosePanel');
+        // removed Jan 09 because takealot have disabled whatfix it seems
+        // console.log("waiting for popup to load");
+        // await page.waitForTimeout(5000);
+        // await page.waitForSelector('#wfx-frame-popup');
+        // const elementHandle = await page.$('#wfx-frame-popup');
+        // const iframe = await elementHandle.contentFrame();
+        // await iframe.waitForSelector('#popupDontShowAgain');
+        // console.log("clicked don't show this button again");
+        // const clickpopupDontShowAgain = await iframe.click('#popupDontShowAgain');
+        // const clickpopupClosePanel = await iframe.click('#popupClosePanel');
         await page.waitForTimeout(5000);
         var url = 'https://seller.takealot.com/shipments/replenishment-orders';
         await page.goto(url, { waitUntil: 'networkidle0' });
